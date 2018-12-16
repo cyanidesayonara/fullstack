@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Numero = ({ name, number }) => {
+const Number = ({ name, number }) => {
   return (
     <tr>
       <td>
@@ -13,4 +13,4 @@ const Numero = ({ name, number }) => {
   )
 }
 
-export default Numero
+export default Number

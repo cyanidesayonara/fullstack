@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header.js'
-import Numero from './components/Numero.js'
 import AddNewForm from './components/AddNewForm.js'
+import NumberTable from './components/NumberTable.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -57,15 +57,7 @@ class App extends React.Component {
           numberValue = { this.state.newNumber }
         />
         <Header text='Numerot' />
-        <table>
-          <tbody>
-            {
-              this.state.persons.map(person =>
-                <Numero key={ person.name } name={ person.name } number={ person.number } />
-              )
-            }
-          </tbody>
-        </table>
+        <NumberTable persons={ this.state.persons } />
       </div>
     )
   }
