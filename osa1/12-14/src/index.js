@@ -17,7 +17,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       selected: 0,
-      votes: props.getVotes()
+      votes: this.props.getVotes()
     }
   }
 
@@ -40,25 +40,29 @@ class App extends React.Component {
       this.setState({ votes: votesCopy })
     }
 
-    let mostVotes = () => {
-      let most = this.state.votes[0]
+    const mostVotes = () => {
+      const most = this.state.votes[0]
       let mostIndex = 0;
       for (let i = 1; i < this.state.votes.length; i++) {
         if (this.state.votes[i] > most) {
           mostIndex = i
         }
-        console.log(this.state.votes[i])
       }
       return mostIndex
     }
 
+    const selectedAnecdote = this.props.anecdotes[this.state.selected]
+    const selectedVotes = this.state.votes[this.state.selected]
+    const topAnecdote = this.props.anecdotes[mostVotes()]
+    const topVotes = this.state.votes[mostVotes()]
+    
     return (
       <div>
-        <Anecdote text={ this.props.anecdotes[this.state.selected] } votes={ this.state.votes[this.state.selected] } />
+        <Anecdote text={ selectedAnecdote } votes={ selectedVotes } />
         <button onClick={ vote }>vote</button>        
         <button onClick={ randomize }>next anecdote</button>
         <h3>anecdote with most votes:</h3>
-        <Anecdote text={ this.props.anecdotes[mostVotes] } votes={ this.state.votes[mostVotes] } />
+        <Anecdote text={ topAnecdote } votes={ topVotes } />
       </div>
     )
   }
