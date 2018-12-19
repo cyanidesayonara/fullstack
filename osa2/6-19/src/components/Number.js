@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Number = ({ name, number }) => {
+const Number = ({ name, number, handleRemove }) => {
   return (
     <tr>
       <td>
@@ -8,6 +8,11 @@ const Number = ({ name, number }) => {
       </td>
       <td>
         { number }
+      </td>
+      <td>
+        <button onClick={ handleRemove }>
+          poista
+        </button>
       </td>
     </tr>
   )
